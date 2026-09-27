@@ -1,0 +1,85 @@
+# =========================================================
+# PDFs in project root
+# Ignore every PDF except transport_map_step*.pdf
+# =========================================================
+/*.pdf
+!/transport_map_step*.pdf
+
+/config/
+
+# =========================================================
+# Generated/output folders in project root
+# =========================================================
+/egu_poster/
+/psc_outputs*/
+/workshop_figs/
+/workshop2/
+/py4castxai/utils_test/main_utils_rename.py
+
+# =========================================================
+# Python files in project root
+# Ignore all except main_test.py
+# =========================================================
+/*.py
+!/main_test.py
+causal_footprint.json
+/py4castxai/utils_test/workshop*
+/py4castxai/utils_test/physical_drift.py
+/anemoixai/
+# =========================================================
+# Python cache
+# =========================================================
+__pycache__/
+*.pyc
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Model checkpoints / weights
+*.ckpt
+*.pth
+*.pt
+
+# Slurm / training logs
+*.out
+lightning_logs/
+
+# Training outputs
+/anemoixai/anemoi/training/output/
+
+# Large transferred artifacts
+/config/TransferNow-Big*
+
+# Root PDFs, except transport maps with steps
+/*.pdf
+!/transport_map_step*.pdf
+
+# Generated root folders
+/egu_poster/
+/psc_outputs*/
+/workshop_figs/
+/workshop3/
+/neurips_figs/
+# Root Python scripts, except main_test.py
+/*.py
+!/main_test.py
+
+# Experimental / unused explainers
+/py4castxai/explainers/basegradTV.py
+/py4castxai/explainers/smoothGradTV.py
+
+/py4castxai/explainers/gradCam.py
+
+# PSC experiments
+/py4castxai/explainers/PSC.py
+/py4castxai/explainers/psc_*.py
+
+# SVGrad
+/py4castxai/explainers/SVGrad.py
+
+# Wavelet
+/py4castxai/explainers/waveletSmoothGrad.py
+
+# Standalone EDA experiments
+/py4castxai/explainers/eda*.py
