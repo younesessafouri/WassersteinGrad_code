@@ -1,60 +1,27 @@
-from .smoothGrad import SmoothGrad, StatGrad
-from .inputxgrad import InputxGrad
+from .base import Explainer
 from .basegrad import BaseGrad
-from .XGrad import XGrad
-from .smoothGradSquared import SmoothGradSquared
-from .WassersteinGrad import (
-    WassersteinGrad,
-    WassersteinSmoothGrad,
-    WassersteinGradMask,
-)
-from .otGrad import otGrad
-from .Centroid import (
-    Centroid,
-    CentroidSmoothGrad,
-    CentroidWassersteinGrad,
-)
-from .VarGrad import VarGrad
-from .integratedGrad import IntegratedGrad
-
-
-__all__ = [
-    "SmoothGrad",
-    "SmoothGradSquared",
-    "InputxGrad",
-    "BaseGrad",
-    "XGrad",
-    "WassersteinGrad",
-    "WassersteinSmoothGrad",
-    "WassersteinGradMask",
-    "otGrad",
-    "Centroid",
-    "CentroidSmoothGrad",
-    "CentroidWassersteinGrad",
-    "VarGrad",
-    "IntegratedGrad",
-    "StatGrad",
-]
-
+from .integratedgrad import IntegratedGrad
+from .smoothgrad import SmoothGrad
+from .vargrad import VarGrad
+from .wassersteingrad import WassersteinGrad, WassersteinGradMask, wasserstein_barycenter
 
 explainers_registry = {
-    "SmoothGrad": SmoothGrad,
     "BaseGrad": BaseGrad,
-    "SmoothGradSquared": SmoothGradSquared,
-    "InputxGrad": InputxGrad,
-    "XGrad": XGrad,
-
-    "WassersteinGrad": WassersteinGrad,
-    "WassersteinSmoothGrad": WassersteinSmoothGrad,
-    "WassersteinGradMask": WassersteinGradMask,
-
-    "otGrad": otGrad,
-
-    "Centroid": Centroid,
-    "CentroidSmoothGrad": CentroidSmoothGrad,
-    "CentroidWassersteinGrad": CentroidWassersteinGrad,
-
+    "SmoothGrad": SmoothGrad,
     "VarGrad": VarGrad,
     "IntegratedGrad": IntegratedGrad,
-    "StatGrad": StatGrad,
+    "WassersteinGrad": WassersteinGrad,  # WGBary
+    "WassersteinGradMask": WassersteinGradMask,  # WGBary x Grad
 }
+
+__all__ = [
+    "Explainer",
+    "BaseGrad",
+    "SmoothGrad",
+    "VarGrad",
+    "IntegratedGrad",
+    "WassersteinGrad",
+    "WassersteinGradMask",
+    "wasserstein_barycenter",
+    "explainers_registry",
+]
