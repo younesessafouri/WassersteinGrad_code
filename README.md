@@ -1,8 +1,20 @@
-# Explanation of Dynamic Physical Field Predictions using WassersteinGrad: Application to Autoregressive Weather Forecasting
+# Explanation of Dynamic Physical Field Predictions using WassersteinGrad:
+## Application to Autoregressive Weather Forecasting
 
-Code of the paper by Younes Essafouri, Laure Raynaud, Luciano Drozda and Laurent Risser
-([arXiv:2604.22580](https://arxiv.org/abs/2604.22580)).
+[![Project Page](https://img.shields.io/badge/Project-Website-blue)](https://younesessafouri.github.io/WassersteinGrad/)
+[![arXiv](https://img.shields.io/badge/arXiv-2604.22580-b31b1b.svg)](https://arxiv.org/abs/2604.22580)
+[![Branch](https://img.shields.io/badge/branch-py4cast-2ea44f)](#)
+[![Companion Toy Experiments](https://img.shields.io/badge/companion-toy--experiments-orange)](https://github.com/younesessafouri/py4cast-xai/tree/toy-experiments)
 
+Code accompanying the paper by **Younes Essafouri, Laure Raynaud, Luciano Drozda, and Laurent Risser**.
+This branch contains the **Py4Cast-based implementation** used for the weather forecasting experiments in the paper.  
+WassersteinGrad is a gradient-based explanation method designed for **dynamic physical fields**, where input perturbations often **displace** attribution maps rather than simply adding stationary noise.
+ 
+> See also the [`toy-experiments`](https://github.com/younesessafouri/py4cast-xai/tree/toy-experiments) branch, which reproduces the key phenomenon of the paper in a small synthetic physical model.
+
+---
+
+## Overview
 On dynamic physical fields, input noise does not add stationary noise to gradient
 attribution maps: it displaces them. SmoothGrad, which averages the perturbed
 gradients pixel by pixel, therefore blurs misaligned features. WassersteinGrad maps
@@ -12,6 +24,13 @@ as a spatial mask on the plain gradient to keep its sign (WGBary×Grad).
 
 This repository contains the implementation used for the weather forecasting
 experiments of the paper, built on [Py4Cast](https://github.com/meteofrance/py4cast).
+
+## Links
+
+- **Project page:** [younesessafouri.github.io/WassersteinGrad](https://younesessafouri.github.io/WassersteinGrad/)
+- **Paper:** [arXiv:2604.22580](https://arxiv.org/abs/2604.22580)
+- **Py4Cast:** [https://github.com/meteofrance/py4cast](https://github.com/meteofrance/py4cast)  
+- **Companion branch:** [`toy-experiments`](https://github.com/younesessafouri/py4cast-xai/tree/toy-experiments)
 
 ## Installation
 
