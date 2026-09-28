@@ -6,17 +6,6 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 
-# Local Py4Cast assets: configs, checkpoints and weights (not distributed)
-/config/
-*.ckpt
-*.pth
-*.pt
-
-# Experiment outputs and logs
-outputs/
-lightning_logs/
-*.out
-
 # Editors and OS files
 .vscode/
 .idea/
