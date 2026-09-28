@@ -1,17 +1,15 @@
 # WassersteinGrad: toy experiment
 
-Reproducible companion to *Explanation of Dynamic Physical Field Predictions using
+Toy experiment companion to *Explanation of Dynamic Physical Field Predictions using
 WassersteinGrad: Application to Autoregressive Weather Forecasting*
 ([arXiv:2604.22580](https://arxiv.org/abs/2604.22580)). This branch reproduces, in a small
-controlled model, the phenomenon the paper builds on. It needs only PyTorch and POT and runs
-on a CPU in about two minutes. The weather forecasting code is on the
+controlled model, the phenomenon the paper builds on. The weather forecasting code is on the
 [`py4cast`](https://github.com/younesessafouri/py4cast-xai/tree/py4cast) branch.
 
 ## The phenomenon
 
 Forecasting models route information in space: max pooling and attention select where
-features come from, and so does the motion estimation of a nowcast. The input gradient of a
-forecast over a region of interest (ROI) is then the ROI carried back along the selected
+features come from. The input gradient of a forecast over a region of interest (ROI) is then the ROI carried back along the selected
 motion: the region the forecast comes from. SmoothGrad-type methods add noise to the input.
 The noise changes the selected motion, so the whole gradient map moves. The perturbed
 gradients are displaced copies of the clean gradient, not noisy versions of it.
@@ -25,8 +23,7 @@ and its maximum follows whichever displaced copies overlap.
 and takes the Wasserstein barycenter of these measures. For translated copies of one measure,
 the 2-Wasserstein barycenter is that measure translated by the mean displacement: positions
 are averaged and the shape is kept. The barycenter is entropic, with λ = 1e-3 as in the paper.
-On this 64 × 64 grid, that is a Gaussian kernel of about 1.4 pixels, which adds a small,
-fixed blur.
+
 
 ## Model
 
@@ -54,7 +51,53 @@ The true source region (green box in the figures) is therefore known exactly.
 
 Metrics are averaged over 24 random cells (speed 0.5–1 px/step, any direction, radius
 2.5–4 px) at lead times of 6 and 24 steps.
+## Toy model
 
+The synthetic experiment uses a simple **extrapolation nowcast** implemented in
+`synthetic/advection.py` on a **64 × 64 periodic grid**.
+
+It is designed to isolate the key phenomenon behind WassersteinGrad:
+
+> **input perturbations can change the estimated motion, which spatially displaces the gradient map.**
+
+---
+
+### Overview
+
+
+```mermaid
+flowchart TD
+    A["Previous observation<br/>q₋₁ (fixed context)"]
+    B["Current observation<br/>q₀ (explained input)"]
+
+    M["① Motion estimation · Block matching<br/><br/>m̂ = argmax_d Σₓ q₀(x) q₋₁(x − d)<br/><br/>Discrete selection · No gradient through m̂"]
+
+    P["② Forecast · Advection–diffusion<br/><br/>∂ₜq + m̂ · ∇q = ν Δq<br/><br/>Propagate for T steps in Fourier space"]
+
+    F["Forecast field q̂_T"]
+
+    R["③ Prediction target<br/><br/>Q(q₀) = (1 / |R|) Σ_{x∈R} q̂_T(x)<br/><br/>Mean forecast over 7 × 7 ROI"]
+
+    A --> M
+    B --> M
+    M -->|"Estimated motion m̂"| P
+    B -->|"Initial field q₀"| P
+    P --> F
+    F --> R
+
+    classDef input fill:#e8f2ff,stroke:#4783c5,color:#17365d
+    classDef motion fill:#fff3dc,stroke:#d69a36,color:#65420a
+    classDef forecast fill:#e7f5ef,stroke:#449c78,color:#164f39
+    classDef target fill:#f0eaff,stroke:#8f70c9,color:#493078
+
+    class A,B input
+    class M motion
+    class P,F forecast
+    class R target
+```
+
+
+---
 ## Reproduce
 
 ```bash
@@ -113,14 +156,11 @@ displacement exceeds this blur.
 
 ## Scope
 
-- **BaseGrad is a reference, not a competitor.** This model has no gradient shattering, so
+- **BaseGrad is a reference.** This model has no gradient shattering, so
   BaseGrad at the clean input is exact and serves as ground truth. The comparison is between
   two ways of aggregating the same perturbed gradients.
 - **The displacement comes from the routing step.** With the motion fixed, the model is
-  linear and input noise leaves the gradient unchanged (checked in `sanity_checks`). We also
-  tried a differentiable (sub-pixel fit) motion estimator and a vortex advected by its own
-  flow. In both, input noise mostly added other gradient terms rather than a clean
-  displacement: a dipole at the source, or broad zero-mean patterns. The toy isolates the
+  linear and input noise leaves the gradient unchanged (checked in `sanity_checks`). The toy isolates the
   displacement mechanism.
 - **Translations only.** Here the perturbed gradients are exact translations. In the weather
   model, they are also deformed.
