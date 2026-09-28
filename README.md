@@ -1,7 +1,6 @@
 # Explanation of Dynamic Physical Field Predictions using WassersteinGrad: Application to Autoregressive Weather Forecasting
 [![Project Page](https://img.shields.io/badge/Project-Website-blue)](https://younesessafouri.github.io/WassersteinGrad/)
 [![arXiv](https://img.shields.io/badge/arXiv-2604.22580-b31b1b.svg)](https://arxiv.org/abs/2604.22580)
-[![Hugging Face](https://shields.io)](https://huggingface.co/datasets/meteofrance/titan)
 [![Branch](https://img.shields.io/badge/branch-py4cast-2ea44f)](#)
 [![Companion Toy Experiments](https://img.shields.io/badge/companion-toy--experiments-orange)](https://github.com/younesessafouri/py4cast-xai/tree/toy-experiments)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -30,7 +29,8 @@ experiments of the paper, built on [Py4Cast](https://github.com/meteofrance/py4c
 
 - **Project page:** [younesessafouri.github.io/WassersteinGrad](https://younesessafouri.github.io/WassersteinGrad/)
 - **Paper:** [arXiv:2604.22580](https://arxiv.org/abs/2604.22580)
-- **Py4Cast:** [https://github.com/meteofrance/py4cast](https://github.com/meteofrance/py4cast)  
+- **Py4Cast:** [https://github.com/meteofrance/py4cast](https://github.com/meteofrance/py4cast)
+- **TITAN:** [TITAN](https://huggingface.co/datasets/meteofrance/titan)
 - **Companion branch:** [`toy-experiments`](https://github.com/younesessafouri/py4cast-xai/tree/toy-experiments)
 
 ## Installation
