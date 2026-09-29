@@ -1,0 +1,10 @@
+# Py4Cast (https://github.com/meteofrance/py4cast) and mfai are also needed to run
+# the forecasting experiments; install them following the Py4Cast instructions.
+torch>=2.1
+numpy
+scipy
+pot>=0.9
+scikit-image
+matplotlib
+cartopy
+pyyaml
