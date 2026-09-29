@@ -2,7 +2,6 @@
 
 [![Project Page](https://img.shields.io/badge/Project-Website-blue)](https://younesessafouri.github.io/WassersteinGrad/)
 [![arXiv](https://img.shields.io/badge/arXiv-2604.22580-b31b1b.svg)](https://arxiv.org/abs/2604.22580)
-[![Branch](https://img.shields.io/badge/branch-py4cast-2ea44f)](#)
 [![Toy Experiments](https://img.shields.io/badge/companion-toy--experiments-orange)](https://github.com/younesessafouri/py4cast-xai/tree/toy-experiments)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
