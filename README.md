@@ -145,11 +145,15 @@ available on the [`toy`](https://github.com/younesessafouri/py4cast-xai/tree/toy
 ## Citation
 
 ```bibtex
-@article{essafouri2026wassersteingrad,
-  title   = {Explanation of Dynamic Physical Field Predictions using {WassersteinGrad}:
-             Application to Autoregressive Weather Forecasting},
-  author  = {Essafouri, Younes and Raynaud, Laure and Drozda, Luciano and Risser, Laurent},
-  journal = {arXiv preprint arXiv:2604.22580},
-  year    = {2026}
+@inproceedings{essafouri2026wassersteingrad,
+  title     = {Explanation of Dynamic Physical Field Predictions using
+               {WassersteinGrad}: Application to Autoregressive Weather Forecasting},
+  author    = {Essafouri, Younes and Raynaud, Laure and
+               Drozda, Luciano and Risser, Laurent},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2026},
+  note      = {Accepted at NeurIPS 2026},
+  eprint    = {2604.22580},
+  archivePrefix = {arXiv}
 }
 ```
